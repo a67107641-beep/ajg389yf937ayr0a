@@ -1,5 +1,3 @@
-# ajg389yf937ayr0a
-
 
 # ElementalTetris
 
@@ -128,3 +126,6 @@ Assets/
 　操作・回転・即落下は未対応です。
 
 ---
+
+
+# ajg389yf937ayr0a
