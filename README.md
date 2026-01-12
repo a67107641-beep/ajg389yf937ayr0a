@@ -67,20 +67,29 @@
 
 ## アーキテクチャ構成
 
-Assets/
-├─ Scripts/
-│  ├─ Domain/            # ゲームの概念・ルール（純粋ロジック）
-│  ├─ Data/              # ScriptableObject 用データ定義
-│  ├─ Managers/          # ゲーム進行・全体制御
-│  └─ Tetris/            # テトリス固有ロジック
-│
-├─ ScriptableObjects/
-│  ├─ Elements/          # 元素データ
-│  ├─ Reactions/         # 元素反応データ
-│  └─ Effects/           # 効果データ
-│
-├─ Scenes/               # シーン定義
-└─ Prefabs/              # プレハブ
+## Assets
+
+### Scripts
+- **Domain**  
+  ゲームの概念・ルール（純粋ロジック）
+- **Data**  
+  ScriptableObject 用データ定義
+- **Managers**  
+  ゲーム進行・全体制御
+- **Tetris**  
+  テトリス固有ロジック
+
+### ScriptableObjects
+- **Elements**  
+  元素データ
+- **Reactions**  
+  元素反応データ
+- **Effects**  
+  効果データ
+
+### Other
+- **Scenes**：シーン定義  
+- **Prefabs**：プレハブ
 
 ---
 
