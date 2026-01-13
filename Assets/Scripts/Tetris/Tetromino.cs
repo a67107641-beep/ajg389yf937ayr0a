@@ -52,7 +52,6 @@ public class Tetromino : MonoBehaviour
         landed = true;
         // 着地フラグを立てる
 
-        // ★ ここでY座標を床の位置に固定
         Vector3 pos = transform.position;
         // 現在の位置を取得
 
