@@ -1,87 +1,84 @@
 using System.Collections.Generic;
-// List ‚È‚Ç‚ÌƒRƒŒƒNƒVƒ‡ƒ“‚ðŽg‚¤‚½‚ß‚Ì–¼‘O‹óŠÔi¦¡‰ñ‚Í–¢Žg—pj
-
 using UnityEngine;
-// Unity‚ÌŠî–{‹@”\iMonoBehaviour, Vector3, Time ‚È‚Çj‚ðŽg‚¤‚½‚ß‚É•K—v
 
 public class Tetromino : MonoBehaviour
-// ƒeƒgƒŠƒ~ƒmi—Ž‰º‚·‚éƒuƒƒbƒN‚Ì‰òj‚ð§Œä‚·‚éƒNƒ‰ƒX
+// ãƒ†ãƒˆãƒªãƒŸãƒŽï¼ˆè½ä¸‹ã™ã‚‹ãƒ–ãƒ­ãƒƒã‚¯ã®å¡Šï¼‰ã‚’åˆ¶å¾¡ã™ã‚‹ã‚¯ãƒ©ã‚¹
 {
     public float fallSpeed = 5f;
-    // ƒeƒgƒŠƒ~ƒm‚ª—Ž‰º‚·‚éƒXƒs[ƒh
+    // ãƒ†ãƒˆãƒªãƒŸãƒŽãŒè½ä¸‹ã™ã‚‹ã‚¹ãƒ”ãƒ¼ãƒ‰
 
     public float bottomY = 0f;
-    // ’…’n‚Æ”»’è‚³‚ê‚éYÀ•Wi°‚Ì‚‚³j
+    // ç€åœ°ã¨åˆ¤å®šã•ã‚Œã‚‹Yåº§æ¨™ï¼ˆåºŠã®é«˜ã•ï¼‰
 
     public float spawnY = 10f;
-    // ƒeƒgƒŠƒ~ƒm‚ª¶¬‚³‚ê‚é‰ŠúYÀ•W
+    // ãƒ†ãƒˆãƒªãƒŸãƒŽãŒç”Ÿæˆã•ã‚Œã‚‹åˆæœŸYåº§æ¨™
 
     bool landed = false;
-    // ‚·‚Å‚É’…’n‚µ‚½‚©‚Ç‚¤‚©‚ð”»’è‚·‚éƒtƒ‰ƒO
+    // ã™ã§ã«ç€åœ°ã—ãŸã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ãƒ•ãƒ©ã‚°
 
     void Start()
-    // ƒQ[ƒ€ŠJŽnŽžiƒIƒuƒWƒFƒNƒg¶¬Žžj‚É1‰ñ‚¾‚¯ŒÄ‚Î‚ê‚é
+    // ã‚²ãƒ¼ãƒ é–‹å§‹æ™‚ï¼ˆã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆç”Ÿæˆæ™‚ï¼‰ã«1å›žã ã‘å‘¼ã°ã‚Œã‚‹
     {
         Vector3 pos = transform.position;
-        // Œ»Ý‚ÌˆÊ’u‚ðŽæ“¾
+        // ç¾åœ¨ã®ä½ç½®ã‚’å–å¾—
 
         pos.y = spawnY;
-        // YÀ•W‚ðƒXƒ|[ƒ“ˆÊ’u‚ÉÝ’è
+        // Yåº§æ¨™ã‚’ã‚¹ãƒãƒ¼ãƒ³ä½ç½®ã«è¨­å®š
 
         transform.position = pos;
-        // •ÏX‚µ‚½ˆÊ’u‚ð”½‰f
+        // å¤‰æ›´ã—ãŸä½ç½®ã‚’åæ˜ 
     }
 
     void Update()
-    // –ˆƒtƒŒ[ƒ€ŒÄ‚Î‚ê‚éˆ—
+    // æ¯Žãƒ•ãƒ¬ãƒ¼ãƒ å‘¼ã°ã‚Œã‚‹å‡¦ç†
     {
         if (landed) return;
-        // ‚·‚Å‚É’…’n‚µ‚Ä‚¢‚½‚ç‰½‚à‚µ‚È‚¢
+        // ã™ã§ã«ç€åœ°ã—ã¦ã„ãŸã‚‰ä½•ã‚‚ã—ãªã„
 
         transform.position += Vector3.down * fallSpeed * Time.deltaTime;
-        // ‰º•ûŒü‚É fallSpeed •ªAŽžŠÔ‚É‰ž‚¶‚ÄˆÚ“®‚³‚¹‚é
+        // ä¸‹æ–¹å‘ã« fallSpeed åˆ†ã€æ™‚é–“ã«å¿œã˜ã¦ç§»å‹•ã•ã›ã‚‹
 
         if (transform.position.y <= bottomY)
-        // YÀ•W‚ª°ˆÈ‰º‚É‚È‚Á‚½‚ç
+        // Yåº§æ¨™ãŒåºŠä»¥ä¸‹ã«ãªã£ãŸã‚‰
         {
             Land();
-            // ’…’nˆ—‚ðŽÀs
+            // ç€åœ°å‡¦ç†ã‚’å®Ÿè¡Œ
         }
     }
 
     void Land()
-    // ƒeƒgƒŠƒ~ƒm‚ª’…’n‚µ‚½‚Æ‚«‚Ìˆ—
+    // ãƒ†ãƒˆãƒªãƒŸãƒŽãŒç€åœ°ã—ãŸã¨ãã®å‡¦ç†
     {
         landed = true;
-        // ’…’nƒtƒ‰ƒO‚ð—§‚Ä‚é
+        // ç€åœ°ãƒ•ãƒ©ã‚°ã‚’ç«‹ã¦ã‚‹
 
-        // š ‚±‚±‚ÅYÀ•W‚ð°‚ÌˆÊ’u‚ÉŒÅ’è
+        // â˜… ã“ã“ã§Yåº§æ¨™ã‚’åºŠã®ä½ç½®ã«å›ºå®š
         Vector3 pos = transform.position;
-        // Œ»Ý‚ÌˆÊ’u‚ðŽæ“¾
+        // ç¾åœ¨ã®ä½ç½®ã‚’å–å¾—
 
         pos.y = bottomY;
-        // YÀ•W‚ð°‚Ì‚‚³‚É•â³
+        // Yåº§æ¨™ã‚’åºŠã®é«˜ã•ã«è£œæ­£
 
         transform.position = pos;
-        // •â³‚µ‚½ˆÊ’u‚ð”½‰f
+        // è£œæ­£ã—ãŸä½ç½®ã‚’åæ˜ 
 
         foreach (Transform child in transform)
-        // ƒeƒgƒŠƒ~ƒm‚ÌŽqƒIƒuƒWƒFƒNƒgiŠeƒuƒƒbƒNj‚ð‡”Ô‚Éˆ—
+        // ãƒ†ãƒˆãƒªãƒŸãƒŽã®å­ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆï¼ˆå„ãƒ–ãƒ­ãƒƒã‚¯ï¼‰ã‚’é †ç•ªã«å‡¦ç†
         {
             Block block = child.GetComponent<Block>();
-            // ŽqƒIƒuƒWƒFƒNƒg‚©‚ç Block ƒRƒ“ƒ|[ƒlƒ“ƒg‚ðŽæ“¾
+            // å­ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‹ã‚‰ Block ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’å–å¾—
 
             if (block == null) continue;
-            // Block ‚ª•t‚¢‚Ä‚¢‚È‚¯‚ê‚ÎŽŸ‚Ö
+            // Block ãŒä»˜ã„ã¦ã„ãªã‘ã‚Œã°æ¬¡ã¸
 
             // block.RegisterToBoard();
-            // iƒRƒƒ“ƒgƒAƒEƒgjƒ{[ƒhŠÇ—ƒNƒ‰ƒX‚É“o˜^‚·‚éˆ—
+            // ï¼ˆã‚³ãƒ¡ãƒ³ãƒˆã‚¢ã‚¦ãƒˆï¼‰ãƒœãƒ¼ãƒ‰ç®¡ç†ã‚¯ãƒ©ã‚¹ã«ç™»éŒ²ã™ã‚‹å‡¦ç†
 
             block.transform.parent = null;
-            // eiƒeƒgƒŠƒ~ƒmj‚©‚çØ‚è—£‚µAŒÂ•Ê‚ÌƒuƒƒbƒN‚É‚·‚é
+            // è¦ªï¼ˆãƒ†ãƒˆãƒªãƒŸãƒŽï¼‰ã‹ã‚‰åˆ‡ã‚Šé›¢ã—ã€å€‹åˆ¥ã®ãƒ–ãƒ­ãƒƒã‚¯ã«ã™ã‚‹
         }
 
         Destroy(gameObject);
-        // ƒeƒgƒŠƒ~ƒm–{‘Ì‚ðíœiŽqƒuƒƒbƒN‚ÍŽc‚éj
+        // ãƒ†ãƒˆãƒªãƒŸãƒŽæœ¬ä½“ã‚’å‰Šé™¤ï¼ˆå­ãƒ–ãƒ­ãƒƒã‚¯ã¯æ®‹ã‚‹ï¼‰
     }
 }
